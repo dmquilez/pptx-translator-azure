@@ -1,6 +1,6 @@
 # pptx-translator
 
-Python script that translates pptx files using Amazon Translate service.
+Python script that translates pptx files using Azure Translator. This script is built upon the [original AWS example](https://github.com/aws-samples/pptx-translator) but it uses Azure Translator services instead.
 
 ## Installation
 
@@ -14,12 +14,12 @@ $ pip install -r requirements.txt
 
 Basic translation:
 ```bash
-python pptx-translator.py source_language_code target_language_code input_file_path
+python pptx-translator.py source_language_code target_language_code input_file_path --azure_key <api_key> --endpoint <URL>
 ```
 
 Example execution:
 ```bash
-python pptx-translator.py ja en input-file.pptx
+python pptx-translator.py ja en input-file.pptx --azure_key 7ixyAnEmB72lPfFuxXCy71qQfJ8VOndnFJSuGDRWZlSxcumH2aiEPQQJ99AICCi5YpzXJ3w3ABBbACOGSBdi --endpoint https://contoso.cognitiveservices.azure.com/
 ```
 
 For more information on available options:
@@ -30,27 +30,25 @@ python pptx-translator.py --help
 ## Command-line Arguments
 
 ```
-usage: Translates pptx files from source language to target language using Amazon Translate service
-       [-h] [--terminology TERMINOLOGY]
-       source_language_code target_language_code input_file_path
+usage: pptx-translator.py [-h] --azure_key AZURE_KEY --endpoint ENDPOINT source_language_code target_language_code input_file_path
+
+Translate PPTX files using Azure Translator API
 
 positional arguments:
-  source_language_code  The language code for the language of the source text.
-                        Example: en
-  target_language_code  The language code requested for the language of the
-                        target text. Example: pt
-  input_file_path       The path of the pptx file that should be translated
+  source_language_code  The language code for the language of the source text. Example: en
+  target_language_code  The language code for the target text. Example: es
+  input_file_path       The path to the PPTX file to translate
 
-optional arguments:
+options:
   -h, --help            show this help message and exit
-  --terminology TERMINOLOGY
-                        The path of the terminology CSV file
+  --azure_key AZURE_KEY
+                        Your Azure Translator API key
+  --endpoint ENDPOINT   Your Azure Translator API endpoint
 ```
 
 ## Features
 
-- Translates PowerPoint (.pptx) files from one language to another using Amazon Translate
-- Supports custom terminology for translation
+- Translates PowerPoint (.pptx) files from one language to another using Azure Translator
 
 ## Security
 
